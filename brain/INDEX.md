@@ -17,6 +17,8 @@ methodology, not a fork of their code.
   building instead, and why.
 - `data/` maps every data need to a real, freely-available Chicago/US source.
 - `parameters.md` is the single source of truth for every tunable constant.
+- `cost-estimate.md` sizes the agent-cognition LLM cost across population/duration scenarios and
+  compares Grok vs. OSS-hosted model options — read before locking in population/duration/model.
 - `evaluation-plan.md` defines what "working" means and how we'll check alignment with reality.
 - `decisions-log.md` is an append-only ADR-style log — record every non-obvious choice here the moment it's made.
 - `open-questions.md` is the parking lot for unresolved decisions. Check it before assuming something is settled.

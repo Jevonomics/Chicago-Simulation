@@ -12,7 +12,12 @@ today's date) and delete it from this list — don't let this file accumulate st
 - **PUMA ↔ Community Area crosswalk** for whichever area(s) get chosen — PUMAs are coarser than
   community areas, so persona sampling needs a defined filter/weighting approach once the area is set.
 - **Agent-cognition LLM and judge LLM choice** — paper uses GPT-4o-mini (agents) / GPT-4o (judge).
-  Pilot needs its own pick, favoring cost given "lightweight." Affects `parameters.md`,
+  `cost-estimate.md` recommends an OSS tiered strategy (cheap 8B-class model for high-frequency
+  low-stakes calls, 70B-class model for belief/planning/place-selection/reflection calls) over a
+  single-model choice like Grok — ~3.4x cheaper than an all-Grok-4.3 approach while protecting the
+  calls the paper's own ablation/backbone studies show are quality-sensitive. Not yet locked in —
+  still need to pick specific models/hosts (candidates: Llama 3.1 8B via DeepInfra for cheap tier,
+  Llama 3.3 70B via Groq/Fireworks for strong tier) and a judge LLM. Affects `parameters.md`,
   `03-architecture.md`.
 
 ## Methodology adaptation choices (can be decided as each module is built)
