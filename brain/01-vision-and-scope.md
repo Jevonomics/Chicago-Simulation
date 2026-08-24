@@ -23,8 +23,9 @@ Concretely, "lightweight" means:
 
 - **Population:** low hundreds of agents (target ~200–500), not thousands.
 - **Geography:** 1–3 contiguous Chicago community areas (see `data/chicago-data-sources.md`), not
-  the full city. A neighborhood pair with a real commute relationship (a residential area + a job-dense
-  area, e.g. a South/West Side neighborhood ↔ the Loop) is more interesting than one isolated area.
+  the full city. **Chosen: Pilsen / Lower West Side ↔ the Loop** — a real commute relationship
+  (residential + job-dense) with enough internal POI density and modal variety to be interesting
+  beyond the Loop pairing alone. Provisional pending LODES flow-volume confirmation.
 - **Duration:** simulate on the order of 1–2 weeks of agent-days, not two months.
 - **Model cost:** default to a cheap/fast LLM for agent cognition (e.g. a mini-tier model or a local
   open-weight model); reserve a stronger model for the LLM-as-judge evaluation only, mirroring the

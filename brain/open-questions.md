@@ -5,12 +5,6 @@ today's date) and delete it from this list — don't let this file accumulate st
 
 ## Scope-defining (blocks meaningful progress until answered)
 
-- **Which Chicago community area(s) are the pilot's study area?** Needs a real commute relationship
-  (residential ↔ job-dense pairing suggested in `data/chicago-data-sources.md`) and reasonably good
-  ACS PUMS / LODES data coverage. This choice cascades into almost everything else (POI pull, PUMA
-  crosswalk, LODES filter, network graph extent) — should be resolved first.
-- **PUMA ↔ Community Area crosswalk** for whichever area(s) get chosen — PUMAs are coarser than
-  community areas, so persona sampling needs a defined filter/weighting approach once the area is set.
 - **Agent-cognition LLM and judge LLM choice** — paper uses GPT-4o-mini (agents) / GPT-4o (judge).
   `cost-estimate.md` recommends an OSS tiered strategy (cheap 8B-class model for high-frequency
   low-stakes calls, 70B-class model for belief/planning/place-selection/reflection calls) over a

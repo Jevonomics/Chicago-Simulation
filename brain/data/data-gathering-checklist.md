@@ -9,11 +9,12 @@ nothing blocks later; size usage when it's actually time to pull POIs.
 
 ## Step 0 — study area (blocks most of Tier D below)
 
-Almost everything in Tier D can't start until this is picked. `chicago-data-sources.md` now lists
-three named candidates (Pilsen/Lower West Side, North Lawndale, Austin) paired with the Loop — pick
-one to unblock work, and treat it as provisional until checked against real LODES commute-flow volume
-once that data's pulled (cheap to verify, not worth blocking on upfront). See the question at the end
-of this session's chat, or `open-questions.md`, for where this gets confirmed.
+**Chosen (2026-08-24): Pilsen / Lower West Side ↔ the Loop** — see `decisions-log.md` for the
+reasoning and `chicago-data-sources.md` for the runner-up candidates (North Lawndale, Austin), kept in
+case the LODES check below argues for switching. Treat this as provisional, not final, until checked
+against real commute-flow volume: pull LODES OD data (Tier A, no signup needed) for Pilsen/Lower West
+Side and confirm it shows meaningful flow to the Loop before building anything downstream that assumes
+it. If that check fails, swap in North Lawndale or Austin — nothing else in this checklist changes.
 
 ## Environment setup (do once)
 

@@ -121,4 +121,36 @@ module count, duration) were changed — this was a correctness/scaffolding pass
 
 ---
 
+## 2026-08-24 — Study area chosen: Pilsen / Lower West Side ↔ the Loop
+
+**Decision:** The pilot's study area is **Pilsen / Lower West Side**, paired with **the Loop**, out of
+three candidates (Pilsen/Lower West Side, North Lawndale, Austin) named in `chicago-data-sources.md`.
+Delegated to Claude's judgment by the user ("use your judgment and document in /brain").
+
+**Why:** Weighed on four criteria, not on demographic plausibility alone:
+1. **Sampling rate fit** — Pilsen's population (~35k) gives a ~1% sampling rate for a 200–500 agent
+   pilot, a reasonable ratio; Austin (~95k) would sample thinner.
+2. **Belief-module data quality** — `modules/03-beliefs.md` flags thin OSM/POI descriptions as a real
+   fidelity risk (agents fall back to category+name only). Pilsen is a well-documented, commercially
+   active neighborhood with enough internal POI density to be interesting on its own, not just a
+   bedroom community entirely dependent on the Loop's POI landscape for interesting place-selection
+   dynamics — this most directly mitigates that flagged risk among the three candidates.
+3. **Vehicle-selection richness** — Pilsen's proximity to downtown (Pink Line + bus + walk/bike-viable
+   distance) means walk/bike/bus/train are all genuinely competitive choices, a richer testbed for
+   `modules/09-vehicle-selection.md` than a neighborhood where one transit mode dominates commute choice.
+4. **Real commute relationship** — Pink Line + bus access to the Loop gives a real, not fabricated,
+   residential↔job-dense pairing, consistent with `01-vision-and-scope.md`'s framing.
+
+**Caveat, stated explicitly:** this was not checked against actual LODES commute-flow volume before
+being chosen — that check (free, no signup, `data/data-gathering-checklist.md` Tier A) should happen
+before building the PUMA crosswalk or pulling PUMS data, and this decision is provisional until it
+does. North Lawndale and Austin remain documented as fallbacks in `chicago-data-sources.md` if that
+check argues against Pilsen.
+
+**Affects:** `01-vision-and-scope.md`, `parameters.md`, `data/chicago-data-sources.md`,
+`data/data-gathering-checklist.md`, `roadmap.md`. Removed the corresponding entry from
+`open-questions.md`'s "Scope-defining" section.
+
+---
+
 (No decisions have been reversed yet.)

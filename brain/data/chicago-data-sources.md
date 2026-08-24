@@ -10,14 +10,14 @@ survey, proprietary city-scale mobility dataset, and smartphone-panel crowd data
   boundaries, published by the Chicago Data Portal ("Boundaries - Community Areas" dataset). This is
   the natural unit for `01-vision-and-scope.md`'s "1–3 community areas" scope and for the place-
   selection module's "macro-level area" concept (`modules/08-place-selection.md`).
-- Suggested pilot candidates (not yet chosen — see `open-questions.md`): a residential area with a
-  real commute relationship to a job-dense area, e.g. a South/West Side residential community area
-  paired with the Loop (job-dense, transit-hub, dense POI coverage) — mirrors the paper's own
-  home/work spatial realism goal and gives the travel-pattern validation something real to show.
-  Named candidates for the residential side, to be checked against actual LODES flow volume once
-  pulled (see `data-gathering-checklist.md`) rather than picked on demographic plausibility alone:
-  - **Pilsen / Lower West Side** — Pink Line + 18th St, moderate size (~35k), has enough internal POI
-    density to be interesting even before counting the Loop pairing.
+- **Chosen: Pilsen / Lower West Side ↔ the Loop** (2026-08-24, see `decisions-log.md`) — Pink Line +
+  18th St, moderate size (~35k, a reasonable ~1% sampling rate for a 200–500 agent pilot), enough
+  internal POI density to be interesting beyond the Loop pairing alone, and close enough to downtown
+  that walk/bike/bus/train are all genuinely competitive choices rather than one mode dominating —
+  a richer testbed for `modules/09-vehicle-selection.md` than a single-dominant-mode commute would be.
+  **Provisional** pending confirmation against actual LODES commute-flow volume once pulled (see
+  `data-gathering-checklist.md`) — the two runner-up candidates, kept here in case that check argues
+  for switching:
   - **North Lawndale** — Pink Line, well-documented West Side community area, strong residential/
     job-dense contrast with the Loop.
   - **Austin** — Green/Blue Line access, largest West Side community area by population, real

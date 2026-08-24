@@ -10,15 +10,19 @@ proposal, per-module adaptation plans, data-source mapping, parameters, evaluati
 
 **Status: in progress.** Initial pass complete (2026-08-24): index, vision/scope, methodology digest,
 architecture proposal, all 10 module docs, 2 data docs, parameters table, evaluation plan, decisions
-log, open questions. Scope-defining open questions (study area, PUMA crosswalk, LLM choice) still
-unresolved — see `open-questions.md`.
+log, open questions. Study area chosen (2026-08-24, Pilsen/Lower West Side ↔ the Loop, provisional
+pending LODES check) and AgentSociety-adoption question resolved (build our own loop). Remaining
+scope-defining open question: agent-cognition/judge LLM choice — see `open-questions.md`.
 
 ## Phase 1 — Resolve scope-defining decisions
 
-- Pick the study area (community area pair with a real commute relationship).
-- Resolve the PUMA↔community-area crosswalk for that area.
+- ~~Pick the study area~~ — done, see `decisions-log.md` (2026-08-24); confirm against LODES flow
+  volume per `data/data-gathering-checklist.md` Step 0.
+- Build the PUMA↔community-area crosswalk for Pilsen/Lower West Side (method decided — pilot-pragmatic
+  spatial overlay, see `data/data-gathering-checklist.md` — execution is the remaining Phase 2 work).
 - Pick agent-cognition and judge LLMs.
-- Check whether AgentSociety's codebase is available to build on.
+- ~~Check whether AgentSociety's codebase is available to build on~~ — resolved, not adopting it
+  regardless (`03-architecture.md`).
 
 Exit criterion: `open-questions.md`'s "Scope-defining" section is empty.
 

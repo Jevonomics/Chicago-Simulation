@@ -46,7 +46,7 @@ changes, edit it here and note why in `decisions-log.md`.
 | Need decay rates (α_n, one per need) | **unset** | Paper gives functional form only. Tune against Appendix C.3 archetype-trajectory shapes. See `modules/04-needs.md`. |
 | Population size | **proposed: lean toward 350–500 agents**, not the low end | See `01-vision-and-scope.md`, `cost-estimate.md` (population buys statistical smoothness in aggregate charts; cost is no longer the constraint under OSS pricing). |
 | Simulated duration | **proposed: lean toward 14 days**, not 7 | See `01-vision-and-scope.md`, `cost-estimate.md` (duration is what most exercises belief formation, reflective memory, and a real weekday/weekend split). |
-| Study area | **unset** | Which community area(s) — see `open-questions.md`. |
+| Study area | **chosen: Pilsen / Lower West Side ↔ the Loop**, provisional pending LODES flow-volume confirmation | See `decisions-log.md` (2026-08-24) and `data/chicago-data-sources.md`. |
 | Agent-cognition LLM | **proposed: OSS tiered routing** — 8B-class model (e.g. Llama 3.1 8B via DeepInfra) for high-frequency/low-stakes calls, 70B-class model (e.g. Llama 3.3 70B via Groq/Fireworks) for belief/planning/place-selection/reflection calls | Not locked. See `cost-estimate.md`, `open-questions.md`. |
 | Judge LLM | **unset** | Stronger-tier target for evaluation only — see `open-questions.md`. |
 | Embedding model (memory similarity) | **unset** | Infrastructure choice, not methodology — see `modules/02-memory.md`. |
