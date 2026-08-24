@@ -14,6 +14,14 @@ survey, proprietary city-scale mobility dataset, and smartphone-panel crowd data
   real commute relationship to a job-dense area, e.g. a South/West Side residential community area
   paired with the Loop (job-dense, transit-hub, dense POI coverage) — mirrors the paper's own
   home/work spatial realism goal and gives the travel-pattern validation something real to show.
+  Named candidates for the residential side, to be checked against actual LODES flow volume once
+  pulled (see `data-gathering-checklist.md`) rather than picked on demographic plausibility alone:
+  - **Pilsen / Lower West Side** — Pink Line + 18th St, moderate size (~35k), has enough internal POI
+    density to be interesting even before counting the Loop pairing.
+  - **North Lawndale** — Pink Line, well-documented West Side community area, strong residential/
+    job-dense contrast with the Loop.
+  - **Austin** — Green/Blue Line access, largest West Side community area by population, real
+    commute-flow volume to the Loop worth confirming via LODES.
 
 ## Population / persona data
 

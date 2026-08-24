@@ -24,6 +24,10 @@ Exit criterion: `open-questions.md`'s "Scope-defining" section is empty.
 
 ## Phase 2 — World + population layer
 
+`data/data-gathering-checklist.md` is the actionable sequencing for this phase (and the tail end of
+Phase 1) — account setup, what's blocked on the study-area choice vs. what isn't, and the PUMA↔
+community-area crosswalk task.
+
 - Pull OSM street graph, POIs, CTA GTFS for the study area.
 - Build the ACS PUMS → LODES → synthetic-persona pipeline (`data/persona-initialization.md`).
 - Sanity-check: does the sampled population's demographic profile look like the real study area?

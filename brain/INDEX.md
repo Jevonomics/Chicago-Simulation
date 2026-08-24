@@ -16,6 +16,9 @@ methodology, not a fork of their code.
 - `modules/` has one file per cognitive/behavioral module, each with: what the paper does, what we're
   building instead, and why.
 - `data/` maps every data need to a real, freely-available Chicago/US source.
+  `data/data-gathering-checklist.md` is the actionable version — account setup, what's blocked on the
+  study-area decision vs. what isn't, and the one real data-engineering task (the PUMA↔community-area
+  crosswalk). Start there when actually pulling data, not just planning around it.
 - `parameters.md` is the single source of truth for every tunable constant.
 - `cost-estimate.md` sizes the agent-cognition LLM cost across population/duration scenarios and
   compares Grok vs. OSS-hosted model options — read before locking in population/duration/model.
