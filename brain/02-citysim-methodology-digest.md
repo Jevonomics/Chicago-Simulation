@@ -8,24 +8,67 @@ decisions live in `modules/*.md`, not here; this file is a faithful record of th
 
 ## Simulation loop (Algorithm 1, Appendix B.1)
 
+As transcribed in the paper's Appendix B.1, the pseudocode nests `perceive()`, `decide_action()`, and
+`reflect()` all inside the per-timestep loop. Taken completely literally, that implies an LLM-scale
+call every 5-minute tick, all day, for every agent — but this contradicts two other parts of the
+paper. The block below is corrected to match what the paper actually describes elsewhere; see
+"Resolved ambiguity" immediately after it for the reasoning.
+
 ```
 For each day:
   For each agent:
-    plan_day()
+    plan_day()                    # mandatory + medium-priority blocks — LLM, once/day (§2.1)
     For each time step (5-minute ticks):
-      perceive()
-      action ← decide_action()
-      if action.requires_move:
-        poi ← select_POI()
-        vehicle ← select_vehicle(poi)
-        move(poi, vehicle)
-      else:
-        execute(action)
-      reflect()   # beliefs, goals, needs, habits
+      signal ← perceive()         # cheap, non-LLM check — NOT an LLM call (see note below)
+      if signal.reaction_warranted:
+        action ← decide_action()  # LLM dispatcher: module selection + invocation (§1.6)
+        if action.requires_move:
+          poi ← select_POI()
+          vehicle ← select_vehicle(poi)
+          move(poi, vehicle)
+        else:
+          execute(action)
+    reflect()                     # once per agent per day, at day's end — beliefs, goals, needs,
+                                   # habits (§1.2) — NOT inside the timestep loop
 ```
 
 Timestep = 5 minutes, matching time-use-survey reporting resolution. Random seeds fixed for
-reproducibility. Framework runs on top of the AgentSociety platform (Piao et al., 2025).
+reproducibility. Framework runs on top of the AgentSociety platform (Piao et al., 2025) — note this
+describes the *source paper's* implementation choice, not ChicagoSim's; see `03-architecture.md` for
+our own (different) decision on that.
+
+### Resolved ambiguity: call frequency of the simulation loop
+
+The paper contains an internal inconsistency that Appendix B.1's pseudocode, as published, doesn't
+resolve on its own:
+
+- **Algorithm 1's pseudocode** nests `perceive()`, `decide_action()`, and `reflect()` inside the
+  per-5-minute-tick loop, which — read literally — implies three LLM-scale calls every tick, all day,
+  for every agent (288 ticks/day).
+- **§1.2 above (Memory module)** states reflective memory is "synthesized at the end of each day" —
+  once per day, not per tick.
+- **§1.6 above (Perception module)**, describing the paper's own Section 3.1.6, is explicit that
+  perception is a two-tier design: a check for *whether the agent should react at all*, and only if
+  so, a separate LLM call to select and invoke a module. The pseudocode as transcribed doesn't
+  visually capture this gate — it reads as "call the LLM every tick" unless you already know §1.6.
+
+Implementing the literal pseudocode would multiply LLM call volume by roughly 10-20x versus what the
+paper's own described mechanism implies (see `cost-and-budget.md` for the worked estimate under the
+resolved interpretation, and the >100-calls/agent-day investigation trigger it sets as a runtime
+check). **Adopted interpretation for ChicagoSim:**
+
+1. `perceive()` at each tick is a **cheap, non-LLM check** — e.g. has the agent arrived somewhere, has
+   a needs threshold been crossed, is a co-located agent available for interaction, has the current
+   planned block ended. No LLM call by default.
+2. `decide_action()` invokes the **LLM dispatcher** (module selection, §1.6) only when that check
+   flags that a reaction is warranted — not on every tick.
+3. `reflect()` runs **once per agent per day, at day's end**, exactly as stated in §1.2 — not inside
+   the timestep loop. The pseudocode above has been corrected accordingly (moved outside the
+   `For each time step` loop, indented under `For each agent` instead).
+
+This is the interpretation `03-architecture.md`'s Simulation loop layer and `cost-and-budget.md`'s
+call-volume estimate both build on — see `decisions-log.md` (2026-08-24 correction entry) for why this
+needed to be resolved explicitly rather than left for a reader to notice.
 
 ## 1. Cognitive state representation
 

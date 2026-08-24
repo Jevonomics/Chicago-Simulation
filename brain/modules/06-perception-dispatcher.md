@@ -17,13 +17,12 @@ control/routing loop — everything else in Section 3 is a "module" this one can
   + value-driven leisure fill), place selection, vehicle selection, social interaction, belief
   update/reflection triggers. No new modules invented for the pilot; this file's job is routing, not
   capability.
-- **Cost control lever:** since this fires every tick for every agent, it's the single highest-volume
-  LLM call in the whole system. Worth considering a cheap non-LLM pre-filter (e.g. "no action needed"
-  short-circuit when the agent is mid-activity and nothing salient changed) before falling back to an
-  LLM call — the paper doesn't specify this, but it's consistent with the paper's own framing of this
-  step as a lightweight react/don't-react gate, not full reasoning.
-
-## Open questions
-
-- Whether a rule-based pre-filter (see above) is faithful enough to the paper's intent or drifts too
-  far from "modeling the mechanism" — worth a comment in `decisions-log.md` once decided either way.
+- **Resolved: the react-or-not check itself is a cheap, non-LLM pre-filter, not an LLM call.** This
+  was previously described below as an open question ("worth considering," "the paper doesn't specify
+  this") — it's now resolved, per `02-citysim-methodology-digest.md`'s "Resolved ambiguity" note under
+  the Algorithm 1 pseudocode: the paper's own §3.1.6 describes exactly this two-tier design (a
+  react/don't-react check, then an LLM dispatch only if warranted), so a rule-based pre-filter (has the
+  agent arrived somewhere, has a needs threshold crossed, is a co-located agent available, has the
+  current block ended) is not a deviation from the paper's intent — it's the correct reading of it.
+  Only `decide_action()` (module selection) is an LLM call, and only when the pre-filter flags a
+  reaction is warranted. See `cost-and-budget.md` for the resulting calls/agent-day estimate.

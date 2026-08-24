@@ -35,15 +35,18 @@ today's date) and delete it from this list — don't let this file accumulate st
   check (`evaluation-plan.md` step 1). See `modules/04-needs.md`, `parameters.md`.
 - **Habit taxonomy source:** hand-authored vocabulary (current lean) vs. mined from a public lifestyle
   survey. See `modules/01-persona.md`.
-- **Perception/dispatcher pre-filter:** is a cheap rule-based "no action needed" short-circuit before
-  the LLM routing call faithful to the paper's intent, or does it drift too far from the mechanism
-  being tested? See `modules/06-perception-dispatcher.md`.
 
 ## Infrastructure (not methodology, but needs an answer before implementation)
 
-- **Is AgentSociety's code available to build on, or fully build our own loop?** The paper runs on top
-  of AgentSociety (Piao et al., 2025); worth checking whether that codebase is public and adoptable
-  before committing to `03-architecture.md`'s "build our own simple loop" default.
+- **Pilot-phase LLM budget ceiling** — `cost-and-budget.md` uses **$100 of a $2,500 total project
+  budget** as a placeholder to work the calls/agent-day × agent-count × days check. Needs confirming
+  (or replacing) as a real number before that check's conclusions can be treated as final.
+- **Agent-cognition LLM choice, sharpened by the budget check:** `cost-and-budget.md` shows that on
+  Grok's mini/economical tier specifically, a $100 ceiling only comfortably covers the low end of the
+  pilot's population/duration range (~200 agents × 7 days) — the fuller-scope lean in `parameters.md`
+  (350–500 agents × 14 days) requires the cheaper OSS tiered-routing approach from `cost-estimate.md`
+  to fit the same ceiling. This needs to be decided deliberately (model choice ↔ scope are coupled),
+  not discovered mid-run.
 - **Embedding model for memory similarity search** — any cheap/available option works; not yet chosen.
 - **Weather/temperature data pipeline** (NOAA API vs. pre-pulled table) for vehicle-selection context.
 - **Google Places / Yelp API quota needs** at the pilot's expected POI volume — check before treating
